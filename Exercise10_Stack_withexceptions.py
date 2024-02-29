@@ -21,6 +21,12 @@ Methods:
     __eq__(self, other) -> used by ==
 """
 
+class StackEmptyError(Exception):
+    pass
+
+class StackFullError(Exception):
+    pass
+
 class Stack:
     """ A docstring to describre the class itself """
     def __init__(self, size): # The "constructor"
@@ -56,7 +62,7 @@ class Stack:
             self.content.append(element)
         else:
             #print(f"Stack Full: {element} cannot be pushed")
-            raise Exception(f"Stack Full: {element} cannot be pushed")
+            raise StackFullError(f"Stack Full: {element} cannot be pushed")
             
     def __repr__(self): # -> used by str() to convert a Stack into a str
         """ A docstring to describe the __repr__ method """
@@ -68,14 +74,14 @@ class Stack:
             return self.content.pop()
         else:
             #print("Stack Empty: pop() cannot pop an element")
-            raise Exception("Stack Empty: pop() cannot pop an element")
+            raise StackEmptyError("Stack Empty: pop() cannot pop an element")
     def peek(self):
         """ A docstring to describe the peek method """
         if len(self.content) != 0:
             return self.content[-1]
         else:
             #print("Stack Empty: it cannot peek an element")
-            raise Exception("Stack Empty: peek() cannot peek an element")
+            raise StackEmptyError("Stack Empty: peek() cannot peek an element")
     def __len__(self): # -> used by the function len()
         """ A docstring to describe the __len__ method """
         return len(self.content)
@@ -88,7 +94,7 @@ class Stack:
 # To test the Stack class:
 
 try:
-    s1=Stack(10) # A stack with a maximum size of 10 created
+    s1=Stack(1) # A stack with a maximum size of 10 created
     s1.push(20)
     s1.push(True)
     s1.push(4.5)
