@@ -54,7 +54,7 @@ class Stack:
             return self.content[-1]
         else:
             print("Stack Empty: it cannot peek an element")
-    def __len__(self): #-> used by the function len()
+    def __len__(self): # -> used by the function len()
         """ A docstring to describe the __len__ method """
         return len(self.content)
     def __eq__(self, other): #-> used by ==
@@ -83,6 +83,8 @@ s2.push(True)
 print(s1, len(s1))
 print(s2, len(s2))
 print(s1 == s2)
+
+len(s1) # s1.__len__() Stack -> LIFO Queue -> FIFO List -> no specific order
 
 s3=Stack(10)
 s3.push(20)
